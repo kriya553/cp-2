@@ -1,0 +1,43 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block title %}
+bookinglist
+{% endblock title %}
+
+{% block body %}
+{% for message in messages %}
+    <script>
+        alert('{{ message }}');
+    </script>
+{% endfor %}
+
+<table class="table">
+    <thead class="bg-light">
+        <tr>
+            <!-- <th scope="col">Sr.No.</th> -->
+            <th scope="col" class="fw-bold">service</th>
+            <th scope="col" class="fw-bold">fullname</th>
+            <th scope="col" class="fw-bold">Email</th>
+            <th scope="col" class="fw-bold">contactno</th>
+            <th scope="col" class="fw-bold">timing</th>
+            <th scope="col" class="fw-bold">date</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in booking %}
+        <tr>
+            <td>{{ i.category }}</td>
+            <td>{{ i.fullname }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.contactno }}</td>
+            <td>{{ i.timing }}</td>
+            <td>{{ i.days }}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock body %}

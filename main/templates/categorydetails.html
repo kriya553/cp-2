@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+category
+{% endblock title %}
+
+{% block body %}
+{% for i in categorydetails %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-2">
+        <div class="col px-5">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="{{ i.logo_image.url }}" class="d-block w-100" alt="..." 
+                            style="height:23rem; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="{{ i.image1.url }}" class="d-block w-100" alt="..."
+                            style="height:23rem; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="{{ i.image2.url }}" class="d-block w-100" alt="..."
+                            style="height:23rem; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="{{ i.image3.url }}" class="d-block w-100" alt="..."
+                            style="height:23rem; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ i.image4.url }}" class="d-block w-100" alt="..."
+                            style="height:23rem; object-fit: cover;">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                
+
+            </div>
+        </div>
+        <div class="col">
+            <h1>{{ i.title }}</h1>
+            <p>{{i.desc}}</p>
+            <p><b>Available Services: </b>{{i.services}}</p>
+            <p><b>Price: </b>Starting from ₹{{i.min_price}} to ₹{{i.max_price}}</p>
+            <p><b>Working Days: </b>{{i.days}}</p>
+            <p><b>Working Hours: </b>{{i.timing}}</p>
+            <p><b>Location: </b>{{i.location}}</p>
+            <a href="{%  url 'booking' title=i.title %}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Book Service </a>
+            
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock body %}

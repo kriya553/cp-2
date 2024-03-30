@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+category
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+    <h2 class="fs-1 text-center mb-3"></h2>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        {% for i in category %}
+        <a href="{% url 'categorydetails' title=i.title %}">
+            <div class="col">
+                <div class="card">
+                    <img src="{{i.logo_image.url}}" class="card-img-top" alt="..." style="height:17rem; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{i.title}}</h5>
+                        <p class="card-title text-center">{{ i.desc|truncatewords:20 }}</p>
+                        <p class="card-title text-center">Price: {{i.min_price}} to {{i.max_price}}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

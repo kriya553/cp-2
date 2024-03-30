@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+category
+{% endblock title %}
+
+{% block body %}
+{% for message in messages %}
+    <script>
+        alert('{{ message }}');
+    </script>
+{% endfor %}
+<div class="container-sm my-5 w-50">
+    <h2 class="fs-1 text-center">Registration for vendor</h2>
+    <form method="post" action="#">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputUsername1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="exampleInputUsername1"
+                aria-describedby="usernameHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+        </div>
+        <p class="my-2">Already have account? <a href="{% url 'login' %}">Login here.</a></p>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+    
+</div>
+
+{% endblock body %}
+
+
+
